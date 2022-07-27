@@ -11,7 +11,7 @@ import cv2 as cv
 import time
 
 # load model
-model = tf.keras.models.load_model('CoinJump_Image_TM_Model.h5', compile=False)
+model = tf.keras.models.load_model('CoinJump_Image_TM_Model.h5')
 
 def counting():
     
@@ -74,7 +74,7 @@ def counting():
             text = 'Jump : {}'.format(jumpCnt)
             font = cv.FONT_HERSHEY_SIMPLEX
             fontscale = 2
-            fontColor = (255,255,255)
+            fontColor = (255,0,0)
             textloc = (350,250)
             lineType = 2
             cv.putText(newFrame, text, textloc, font, fontscale, fontColor, lineType)
@@ -86,14 +86,12 @@ def counting():
             print('done')
             print(jumpCnt)
             break
-        cv.resizeWindow("enhanced", 640, 480)
         
         etime = time.time()
 
         cv.imshow(f"COIN JUMP {etime - stime:.5f} sec", newFrame)
         cv.waitKey(1)
-        #time.sleep(1)
-        cv.destroyAllWindows()
+        #cv.destroyAllWindows()
     
     
                 
